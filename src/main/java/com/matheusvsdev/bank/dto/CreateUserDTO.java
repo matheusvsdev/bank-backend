@@ -2,13 +2,14 @@ package com.matheusvsdev.bank.dto;
 
 import com.matheusvsdev.bank.entity.User;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class CreateUserDTO {
 
     private String fullName;
 
-    private Date birthDate;
+    private LocalDate birthDate;
 
     private String cpfCnpj;
 
@@ -19,7 +20,7 @@ public class CreateUserDTO {
     public CreateUserDTO() {
     }
 
-    public CreateUserDTO(String fullName, Date birthDate, String cpfCnpj, String email, String password) {
+    public CreateUserDTO(String fullName, LocalDate birthDate, String cpfCnpj, String email, String password) {
         this.fullName = fullName;
         this.birthDate = birthDate;
         this.cpfCnpj = cpfCnpj;
@@ -39,7 +40,7 @@ public class CreateUserDTO {
         return fullName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 

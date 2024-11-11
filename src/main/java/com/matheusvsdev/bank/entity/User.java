@@ -2,6 +2,7 @@ package com.matheusvsdev.bank.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class User {
 
     private String fullName;
 
-    private Date birthDate;;
+    private LocalDate birthDate;;
 
     @Column(unique = true)
     private String cpfCnpj;
@@ -28,7 +29,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String fullName, Date birthDate, String cpfCnpj, String email, String password) {
+    public User(Long id, String fullName, LocalDate birthDate, String cpfCnpj, String email, String password) {
         this.id = id;
         this.fullName = fullName;
         this.birthDate = birthDate;
@@ -65,11 +66,11 @@ public class User {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

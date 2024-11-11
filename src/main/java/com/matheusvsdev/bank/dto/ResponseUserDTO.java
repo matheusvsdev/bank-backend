@@ -2,6 +2,7 @@ package com.matheusvsdev.bank.dto;
 
 import com.matheusvsdev.bank.entity.User;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ResponseUserDTO {
@@ -10,7 +11,7 @@ public class ResponseUserDTO {
 
     private String fullName;
 
-    private Date birthDate;
+    private LocalDate birthDate;
 
     private String cpfCnpj;
 
@@ -19,7 +20,7 @@ public class ResponseUserDTO {
     public ResponseUserDTO() {
     }
 
-    public ResponseUserDTO(Long id, String fullName, Date birthDate, String cpfCnpj, String email, String password) {
+    public ResponseUserDTO(Long id, String fullName, LocalDate birthDate, String cpfCnpj, String email, String password) {
         this.id = id;
         this.fullName = fullName;
         this.birthDate = birthDate;
@@ -43,7 +44,7 @@ public class ResponseUserDTO {
         return fullName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
