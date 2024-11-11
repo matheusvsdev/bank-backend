@@ -1,0 +1,1 @@
+INSERT INTO tb_user (full_name, birth_date, cpf_cnpj, email, password) VALUES ('Maria', '1990-09-09', '123456', 'maria@example.com', '123456789');
