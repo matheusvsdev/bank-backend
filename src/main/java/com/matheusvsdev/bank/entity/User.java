@@ -3,7 +3,9 @@ package com.matheusvsdev.bank.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,56 +16,58 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String imgUrl;
+
     private String fullName;
 
-    private LocalDate birthDate;;
-
     @Column(unique = true)
-    private String cpfCnpj;
+    private String cpf;
 
-    @Column(unique = true)
-    private String email;
+    private LocalDate birthDate;
 
-    private String password;
+    @OneToMany(mappedBy = "client")
+    private List<BusinessAccount> businessAccounts = new ArrayList<>();
+
+    @OneToOne(mappedBy = "client")
+    private PersonalAccount personalAccount;
 
     public User() {
     }
 
-    public User(Long id, String fullName, LocalDate birthDate, String cpfCnpj, String email, String password) {
+    public User(Long id, String imgUrl, String fullName, String cpf, LocalDate birthDate) {
         this.id = id;
+        this.imgUrl = imgUrl;
         this.fullName = fullName;
+        this.cpf = cpf;
         this.birthDate = birthDate;
-        this.cpfCnpj = cpfCnpj;
-        this.email = email;
-        this.password = password;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getPassword() {
-        return password;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getCpfCnpj() {
-        return cpfCnpj;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfCnpj(String cpfCnpj) {
-        this.cpfCnpj = cpfCnpj;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public LocalDate getBirthDate() {
@@ -74,12 +78,20 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public String getFullName() {
-        return fullName;
+    public List<BusinessAccount> getBusinessAccounts() {
+        return businessAccounts;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setBusinessAccounts(List<BusinessAccount> businessAccounts) {
+        this.businessAccounts = businessAccounts;
+    }
+
+    public PersonalAccount getPersonalAccount() {
+        return personalAccount;
+    }
+
+    public void setPersonalAccount(PersonalAccount personalAccount) {
+        this.personalAccount = personalAccount;
     }
 
     @Override

@@ -19,22 +19,17 @@ public class UserService {
     private UserRepository userRepository;
 
     @Transactional
-    public ResponseUserDTO createUser(CreateUserDTO dto) {
-        User user = new User();
-        convertingDtoToEntity(user, dto);
+    public User createUser(CreateUserDTO dto) {
 
-        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        User user = new User(
+                null,
+                dto.getImgUrl(),
+                dto.getFullName(),
+                dto.getCpf(),
+                dto.getBirthDate());
 
         user = userRepository.save(user);
 
-        return new ResponseUserDTO(user);
-
-    }
-
-    public void convertingDtoToEntity(User entity, CreateUserDTO dto) {
-        entity.setFullName(dto.getFullName());
-        entity.setBirthDate(dto.getBirthDate());
-        entity.setCpfCnpj(dto.getCpfCnpj());
-        entity.setEmail(dto.getEmail());
+        return user;
     }
 }

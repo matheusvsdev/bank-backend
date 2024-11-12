@@ -3,56 +3,58 @@ package com.matheusvsdev.bank.dto;
 import com.matheusvsdev.bank.entity.User;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class CreateUserDTO {
 
+    private Long id;
+
+    private String imgUrl;
+
     private String fullName;
 
+    private String cpf;
+
     private LocalDate birthDate;
-
-    private String cpfCnpj;
-
-    private String email;
-
-    private String password;
 
     public CreateUserDTO() {
     }
 
-    public CreateUserDTO(String fullName, LocalDate birthDate, String cpfCnpj, String email, String password) {
+    public CreateUserDTO(String imgUrl
+            , String fullName
+            , String cpf
+            , LocalDate birthDate) {
+
+        this.imgUrl = imgUrl;
         this.fullName = fullName;
+        this.cpf = cpf;
         this.birthDate = birthDate;
-        this.cpfCnpj = cpfCnpj;
-        this.email = email;
-        this.password = password;
     }
 
     public CreateUserDTO(User entity) {
+        id = entity.getId();
+        imgUrl = entity.getImgUrl();
         fullName = entity.getFullName();
+        cpf = entity.getCpf();
         birthDate = entity.getBirthDate();
-        cpfCnpj = entity.getCpfCnpj();
-        email = entity.getEmail();
-        password = entity.getPassword();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
     }
 
     public String getFullName() {
         return fullName;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public LocalDate getBirthDate() {
         return birthDate;
-    }
-
-    public String getCpfCnpj() {
-        return cpfCnpj;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 }

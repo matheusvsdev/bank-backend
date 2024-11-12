@@ -9,51 +9,55 @@ public class ResponseUserDTO {
 
     private Long id;
 
+    private String imgUrl;
+
     private String fullName;
 
+    private String cpf;
+
     private LocalDate birthDate;
-
-    private String cpfCnpj;
-
-    private String email;
 
     public ResponseUserDTO() {
     }
 
-    public ResponseUserDTO(Long id, String fullName, LocalDate birthDate, String cpfCnpj, String email, String password) {
+    public ResponseUserDTO(Long id
+            , String imgUrl
+            , String fullName
+            , String cpf
+            , LocalDate birthDate) {
+
         this.id = id;
+        this.imgUrl = imgUrl;
         this.fullName = fullName;
+        this.cpf = cpf;
         this.birthDate = birthDate;
-        this.cpfCnpj = cpfCnpj;
-        this.email = email;
     }
 
     public ResponseUserDTO(User entity) {
         id = entity.getId();
+        imgUrl = entity.getImgUrl();
         fullName = entity.getFullName();
+        cpf = entity.getCpf();
         birthDate = entity.getBirthDate();
-        cpfCnpj = entity.getCpfCnpj();
-        email = entity.getEmail();
     }
 
     public Long getId() {
         return id;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
     public String getFullName() {
         return fullName;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public LocalDate getBirthDate() {
         return birthDate;
     }
-
-    public String getCpfCnpj() {
-        return cpfCnpj;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
 }

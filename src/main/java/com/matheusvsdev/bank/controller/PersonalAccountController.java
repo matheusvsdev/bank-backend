@@ -1,8 +1,8 @@
 package com.matheusvsdev.bank.controller;
 
-import com.matheusvsdev.bank.dto.CreateUserDTO;
-import com.matheusvsdev.bank.dto.ResponseUserDTO;
-import com.matheusvsdev.bank.service.UserService;
+import com.matheusvsdev.bank.dto.CreatePersonalAccountDTO;
+import com.matheusvsdev.bank.dto.ResponsePersonalAccountDTO;
+import com.matheusvsdev.bank.service.PersonalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,21 +14,21 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserController {
+@RequestMapping(value = "/personalAccount")
+public class PersonalAccountController {
 
     @Autowired
-    private UserService userService;
+    private PersonalAccountService personalAccountService;
 
     @PostMapping
-    public ResponseEntity<ResponseUserDTO> createUser(@RequestBody CreateUserDTO dto) {
-        ResponseUserDTO user = userService.createUser(dto);
+    public ResponseEntity<ResponsePersonalAccountDTO> createPersonalAccount(@RequestBody CreatePersonalAccountDTO dto) {
+        ResponsePersonalAccountDTO personalAccount = personalAccountService.createPersonalAccount(dto);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(user.getId())
+                .buildAndExpand(personalAccount.getId())
                 .toUri();
 
-        return ResponseEntity.created(uri).body(user);
+        return ResponseEntity.created(uri).body(personalAccount);
     }
 }
