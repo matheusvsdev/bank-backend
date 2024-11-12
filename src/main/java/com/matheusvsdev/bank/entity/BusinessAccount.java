@@ -22,6 +22,10 @@ public class BusinessAccount {
     @Column(unique = true)
     private String email;
 
+    private String accessPassword;
+
+    private String transactionPassword;
+
     private BigDecimal balance = BigDecimal.ZERO;
 
     private Instant openingDate;
@@ -45,6 +49,8 @@ public class BusinessAccount {
             , String cnpj
             , String companyName
             , String email
+            , String accessPassword
+            , String transactionPassword
             , BigDecimal balance
             , Instant openingDate
             , Instant closingDate
@@ -56,6 +62,8 @@ public class BusinessAccount {
         this.cnpj = cnpj;
         this.companyName = companyName;
         this.email = email;
+        this.accessPassword = accessPassword;
+        this.transactionPassword = transactionPassword;
         this.balance = balance;
         this.openingDate = openingDate;
         this.closingDate = closingDate;
@@ -90,6 +98,22 @@ public class BusinessAccount {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAccessPassword() {
+        return accessPassword;
+    }
+
+    public void setAccessPassword(String accessPassword) {
+        this.accessPassword = accessPassword;
+    }
+
+    public String getTransactionPassword() {
+        return transactionPassword;
+    }
+
+    public void setTransactionPassword(String transactionPassword) {
+        this.transactionPassword = transactionPassword;
     }
 
     public BigDecimal getBalance() {
